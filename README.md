@@ -1,6 +1,7 @@
 # Quetcd
 
 [![Build Status](https://travis-ci.org/dpirotte/quetcd.svg?branch=master)](https://travis-ci.org/dpirotte/quetcd)
+[![Coverage Status](https://coveralls.io/repos/github/dpirotte/quetcd/badge.svg?branch=master)](https://coveralls.io/github/dpirotte/quetcd?branch=master)
 
 Quetcd is a simple message queue implemented on top of etcd. It is intended to handle high importance, low throughput messages.
 

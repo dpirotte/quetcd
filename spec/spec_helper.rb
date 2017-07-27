@@ -7,6 +7,9 @@ require 'minitest/spec'
 require 'net/http'
 require 'timeout'
 
+require 'coveralls'
+Coveralls.wear!
+
 Minitest::Reporters.use!
 
 def etcd_running?
