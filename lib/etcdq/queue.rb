@@ -13,7 +13,7 @@ class Etcdq::Queue
   def pop
     kvs = @conn.get(@name, range_end: @range_end, limit: 5, sort_order: :ascend, sort_target: :create).kvs
 
-    kv = kvs.detect do |kv|
+    first_unclaimed_kv = kvs.detect do |kv|
       @conn.transaction do |txn|
         txn.compare = [
           txn.mod_revision(kv.key, :equal, kv.mod_revision)
@@ -25,6 +25,6 @@ class Etcdq::Queue
       end.succeeded
     end
 
-    kv ? kv.value : nil
+    first_unclaimed_kv ? first_unclaimed_kv.value : nil
   end
 end
