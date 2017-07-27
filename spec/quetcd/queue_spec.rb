@@ -25,12 +25,12 @@ describe Quetcd::Queue do
     end
 
     it "pops the highest priority message off of the queue" do
-      queue.enqueue("foo")
-      queue.enqueue("bar", priority: 2)
-      queue.enqueue("baz", priority: 1)
-      queue.dequeue.must_equal("baz")
-      queue.dequeue.must_equal("bar")
-      queue.dequeue.must_equal("foo")
+      queue.enqueue("default")
+      queue.enqueue("high", priority: 2)
+      queue.enqueue("highest", priority: 1)
+      queue.dequeue.must_equal("highest")
+      queue.dequeue.must_equal("high")
+      queue.dequeue.must_equal("default")
     end
   end
 end
