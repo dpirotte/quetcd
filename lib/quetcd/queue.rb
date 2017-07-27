@@ -5,12 +5,12 @@ class Quetcd::Queue
     @range_end = "quetcd/#{name}0"
   end
 
-  def push(message)
+  def enqueue(message)
     key = "#{@name}#{Time.now.to_f.to_s.tr(".","")}"
     @conn.put(key, message)
   end
 
-  def pop
+  def dequeue
     kvs = @conn.get(@name, range_end: @range_end, limit: 5, sort_order: :ascend, sort_target: :create).kvs
 
     first_unclaimed_kv = kvs.detect do |kv|

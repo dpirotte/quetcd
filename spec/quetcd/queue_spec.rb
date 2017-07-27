@@ -10,19 +10,18 @@ describe Quetcd::Queue do
     Quetcd::Queue.new
   end
 
-  describe "#pop" do
+  describe "#dequeue" do
     it "is nil with no messages" do
-      queue.pop.must_be_nil
+      queue.dequeue.must_be_nil
     end
 
     it "pops the oldest message off of the queue" do
-      queue.push("foo")
-      queue.push("bar")
-      queue.pop.must_equal("foo")
-      queue.push("baz")
-      queue.pop.must_equal("bar")
-      queue.pop.must_equal("baz")
+      queue.enqueue("foo")
+      queue.enqueue("bar")
+      queue.dequeue.must_equal("foo")
+      queue.enqueue("baz")
+      queue.dequeue.must_equal("bar")
+      queue.dequeue.must_equal("baz")
     end
   end
-
 end
