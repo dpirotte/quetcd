@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  etcd:
+    image: "quay.io/coreos/etcd:v3.2.4"
+    restart: "always"
+    ports:
+      - 2379
+      - 2380
+      - 4001
+    environment:
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd:2379
+  ruby:
+    image: "ruby:latest"
+    volumes:
+      - "${PWD}:/app"
+    working_dir: "/app"
