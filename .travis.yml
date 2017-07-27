@@ -14,7 +14,6 @@ env:
   - ETCD_VERSION=v3.0
   - ETCD_VERSION=v3.1
   - ETCD_VERSION=v3.2
-  - ETCD_VERSION=latest
 
 before_install:
   - gem install bundler -v 1.15.3 --no-rdoc --no-ri
