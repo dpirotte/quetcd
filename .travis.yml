@@ -1,5 +1,24 @@
-sudo: false
+sudo: required
+
+services:
+  - docker
+
 language: ruby
+
 rvm:
-  - 2.4.1
-before_install: gem install bundler -v 1.14.4
+  - 2.2
+  - 2.3
+  - 2.4
+
+env:
+  - ETCD_VERSION=v3.0
+  - ETCD_VERSION=v3.1
+  - ETCD_VERSION=v3.2
+  - ETCD_VERSION=latest
+
+before_install:
+  - gem install bundler -v 1.15.3 --no-rdoc --no-ri
+  - bundle install
+  - docker run -d --rm -p 2379:2379 -e ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379 -e ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379 quay.io/coreos/etcd:$ETCD_VERSION
+
+script: bundle exec rake
