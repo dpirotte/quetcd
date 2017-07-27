@@ -5,13 +5,14 @@ class Quetcd::Queue
     @range_end = "quetcd/#{name}0"
   end
 
-  def enqueue(message)
-    key = "#{@name}#{Time.now.to_f.to_s.tr(".","")}"
+  def enqueue(message, priority: 5)
+    ts = Time.now.to_f.to_s.tr(".","")
+    key = "#{@name}#{priority}/#{ts}"
     @conn.put(key, message)
   end
 
   def dequeue
-    kvs = @conn.get(@name, range_end: @range_end, limit: 5, sort_order: :ascend, sort_target: :create).kvs
+    kvs = @conn.get(@name, range_end: @range_end, limit: 5, sort_order: :ascend, sort_target: :key).kvs
 
     first_unclaimed_kv = kvs.detect do |kv|
       @conn.transaction do |txn|
