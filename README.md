@@ -1,10 +1,8 @@
 # Quetcd
 
-[[![Build Status](https://travis-ci.org/dpirotte/quetcd.svg?branch=master)](https://travis-ci.org/dpirotte/quetcd)
+[![Build Status](https://travis-ci.org/dpirotte/quetcd.svg?branch=master)](https://travis-ci.org/dpirotte/quetcd)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/quetcd`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Quetcd is a simple message queue implemented on top of etcd. It is intended to handle high importance, low throughput messages.
 
 ## Installation
 
@@ -24,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'quetcd'
+
+queue = Quetcd::Queue.new(url: "http://localhost:2379", name: "my_message_queue")
+
+queue.push("foo")
+
+queue.pop
+# => "foo"
+```
 
 ## Development
 
@@ -34,7 +41,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Dave Pirotte/quetcd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dpirotte/quetcd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
