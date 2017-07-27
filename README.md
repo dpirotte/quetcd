@@ -13,9 +13,9 @@ require 'quetcd'
 
 queue = Quetcd::Queue.new(url: "http://localhost:2379", name: "my_message_queue")
 
-queue.push("foo")
+queue.enqueue("foo")
 
-queue.pop
+queue.dequeue
 # => "foo"
 ```
 
