@@ -1,3 +1,3 @@
-module Etcdq
+module Quetcd
   VERSION = "0.1.0"
 end

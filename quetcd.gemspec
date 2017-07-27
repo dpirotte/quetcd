@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'etcdq/version'
+require 'quetcd/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "etcdq"
-  spec.version       = Etcdq::VERSION
+  spec.name          = "quetcd"
+  spec.version       = Quetcd::VERSION
   spec.authors       = ["Dave Pirotte"]
   spec.email         = ["dpirotte@gmail.com"]
 
   spec.summary       = %q{Simple message queue built on etcd 3.x}
-  spec.homepage      = "http://github.com/dpirotte/etcdq"
+  spec.homepage      = "http://github.com/dpirotte/quetcd"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

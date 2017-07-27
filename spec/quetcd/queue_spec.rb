@@ -1,13 +1,13 @@
 require "spec_helper"
 
-describe Etcdq::Queue do
+describe Quetcd::Queue do
   before(:each) do
     conn = Etcdv3.new(url: "http://localhost:2379")
     conn.del("\0", range_end: "\0")
   end
 
   let :queue do
-    Etcdq::Queue.new
+    Quetcd::Queue.new
   end
 
   describe "#pop" do

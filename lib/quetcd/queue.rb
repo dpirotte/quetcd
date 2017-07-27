@@ -1,8 +1,8 @@
-class Etcdq::Queue
-  def initialize(url: "http://localhost:2379", name: "etcdq")
+class Quetcd::Queue
+  def initialize(url: "http://localhost:2379", name: "quetcd")
     @conn = Etcdv3.new(url: url)
-    @name = "etcdq/#{name}/"
-    @range_end = "etcdq/#{name}0"
+    @name = "quetcd/#{name}/"
+    @range_end = "quetcd/#{name}0"
   end
 
   def push(message)

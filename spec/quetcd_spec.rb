@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Etcdq do
+describe Quetcd do
   it "has a version number" do
-    refute_nil ::Etcdq::VERSION
+    refute_nil ::Quetcd::VERSION
   end
 end
