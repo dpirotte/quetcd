@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 describe Etcdq do
   it "has a version number" do
