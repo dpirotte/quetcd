@@ -18,7 +18,6 @@ env:
 
 before_install:
   - gem install bundler -v 1.15.3 --no-rdoc --no-ri
-  - bundle install
   - docker run -d --rm -p 2379:2379 -e ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379 -e ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379 quay.io/coreos/etcd:$ETCD_VERSION
 
 script: bundle exec rake
