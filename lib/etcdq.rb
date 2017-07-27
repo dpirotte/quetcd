@@ -1,5 +1,4 @@
+require "etcdq/queue"
 require "etcdq/version"
 
-module Etcdq
-  # Your code goes here...
-end
+require "etcdv3"
