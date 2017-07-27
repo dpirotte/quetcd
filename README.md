@@ -4,21 +4,7 @@
 
 Quetcd is a simple message queue implemented on top of etcd. It is intended to handle high importance, low throughput messages.
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'quetcd'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install quetcd
+This gem is very incomplete and not intended for production use.
 
 ## Usage
 
