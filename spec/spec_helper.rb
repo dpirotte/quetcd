@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'quetcd'
 
@@ -6,9 +9,6 @@ require 'minitest/reporters'
 require 'minitest/spec'
 require 'net/http'
 require 'timeout'
-
-require 'coveralls'
-Coveralls.wear!
 
 Minitest::Reporters.use!
 
