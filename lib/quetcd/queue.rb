@@ -12,9 +12,9 @@ class Quetcd::Queue
   end
 
   def dequeue
-    kvs = @conn.get(@name, range_end: @range_end, limit: 5, sort_order: :ascend, sort_target: :key).kvs
+    candidate_messages = pending_messages(limit: 10)
 
-    first_unclaimed_kv = kvs.detect do |kv|
+    dequeued_message = candidate_messages.detect do |kv|
       @conn.transaction do |txn|
         txn.compare = [
           txn.mod_revision(kv.key, :equal, kv.mod_revision)
@@ -26,6 +26,16 @@ class Quetcd::Queue
       end.succeeded
     end
 
-    first_unclaimed_kv ? first_unclaimed_kv.value : nil
+    dequeued_message ? dequeued_message.value : nil
+  end
+
+  def peek
+    first_pending_message = pending_messages(limit: 1).first
+    first_pending_message ? first_pending_message.value : nil
+  end
+
+  private
+  def pending_messages(limit: 5)
+    @conn.get(@name, range_end: @range_end, limit: limit, sort_order: :ascend, sort_target: :key).kvs
   end
 end

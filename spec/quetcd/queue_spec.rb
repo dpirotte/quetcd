@@ -10,6 +10,14 @@ describe Quetcd::Queue do
     Quetcd::Queue.new
   end
 
+  describe "peek" do
+    it "returns the first unclaimed job on the queue" do
+      queue.enqueue("foo")
+      queue.peek.must_equal("foo")
+      queue.peek.must_equal("foo")
+    end
+  end
+
   describe "#dequeue" do
     it "is nil with no messages" do
       queue.dequeue.must_be_nil
